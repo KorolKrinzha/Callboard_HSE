@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!--
+    "section": "Sports",
+    "subsection": "N.F.L.",
+    "title": "Britt Reid, a Chiefs Assistant Coach, Is Involved in a Car Crash",
+    "abstract": "The team released a statement confirming that Reid, the son of Kansas City’s head coach, Andy Reid, had been in an accident but provided no other details.",
+    "url": "https://www.nytimes.com/2021/02/05/sports/football/britt-reid-chiefs-crash.html",
+    -->
+
+    <TextView
+        android:id="@+id/section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Sports / N.F.L."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="12sp"
+        android:textColor="#FF0000" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Britt Reid, a Chiefs Assistant Coach, Is Involved in a Car Crash"
+        android:textStyle="bold"
+        android:textColor="#242424"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/section" />
+
+    <TextView
+        android:id="@+id/abstract_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="The team released a statement confirming that Reid, the son of Kansas City’s head coach, Andy Reid, had been in an accident but provided no other details."
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        android:textSize="14sp"
+        android:textColor="#404040" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

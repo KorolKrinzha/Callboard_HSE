@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#AA2323">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#2F2F2F"
+            android:text="Физики объяснили появление капель-многогранников в эмульсиях" />
+
+        <TextView
+            android:id="@+id/news_body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:textSize="18sp"
+            android:textColor="#4F4F4F"
+            android:text="Ученые описали механизм изменения формы капель в эмульсиях типа «масло в воде» при охлаждении с образованием монослоя твердой фазы на поверхности. Оказалось, превращение обычных сферических капель в многогранники — это результат действия сил растяжения и изгиба в твердом поверхностном слое, а также сил гравитации. А зависимость формы капли от размера — это следствие спонтанных деформаций твердой поверхности капель. В исследовании опубликованном в Physical Review Letters авторы предлагают модель для описания поведения капель алканов эмульгированных в воде." />
+
+    </LinearLayout>
+
+</ScrollView>

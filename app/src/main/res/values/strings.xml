@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">callboardhse</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string name="main_menu_profile"><font size="10">Профиль</font></string>
+    <string name="main_menu_fire"><font size="10">Посещаемые</font></string>
+    <string name="main_menu_heart"><font size="10">Ваши события</font></string>
+    <string name="main_menu_star"><font size="10">Избранное</font></string>
+
+    <string name="event_head_hint"><font size="30">Название события</font></string>
+    <string name="event_home_hint"><font size="30">Место проведения</font></string>
+    <string name="event_calendar_hint"><font size="30">Время проведения</font></string>
+    <string name="event_contact_hint"><font size="30">Контакты</font></string>
+    <string name="event_description_hint"><font size="30">Описание события</font></string>
+    <string name="event_idea"><font size="30">выберите разделы</font></string>
+
+
+    <string name="menu_profile"><font size="30">Иванов Иван Иванович</font></string>
+
+
+    <string-array name="event_home_pickplace">
+        <item>Солянка</item>
+        <item>Ляля</item>
+        <item>Колобок</item>
+        <item>БХ</item>
+    </string-array>
+
+
+</resources>
