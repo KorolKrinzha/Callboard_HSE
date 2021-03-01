@@ -19,7 +19,7 @@ class NewsListProviderImpl : NewsListProvider {
         api.getNews("all", "all", "ZcWzm2XNqZg4NiR95W4ppQ6n9SWrBMAn").enqueue(
             object : Callback<NewsListModel> {
                 override fun onFailure(call: Call<NewsListModel>, t: Throwable) {
-                    Log.e("KEK", "errrrrrrrrorrrr, error = ${t.message}")
+
                     t.printStackTrace()
                 }
 

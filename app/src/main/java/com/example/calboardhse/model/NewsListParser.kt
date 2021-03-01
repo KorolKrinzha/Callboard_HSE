@@ -13,12 +13,9 @@ class NewsListParser : JsonParser<NewsListModel> {
         val builder = NewsListModel.Builder()
         reader.beginObject()
         while (reader.hasNext()) {
-            when (reader.nextName()) {
-                STATUS -> builder.success = reader.nextString()
-                NUM_RESULTS -> builder.newsAmount = reader.nextInt()
-                RESULTS -> builder.news = parseResults(reader)
-                else -> reader.skipValue()
-            }
+            builder.news = parseResults(reader)
+
+
         }
         reader.endObject()
         return builder.build()
