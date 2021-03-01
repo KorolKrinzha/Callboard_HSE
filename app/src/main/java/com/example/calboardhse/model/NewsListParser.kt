@@ -36,12 +36,14 @@ class NewsListParser : JsonParser<NewsListModel> {
         reader.beginObject()
         while (reader.hasNext()) {
             when (reader.nextName()) {
-                SECTION -> builder.section = reader.nextString()
-                SUBSECTION -> builder.subsection = reader.nextString()
                 TITLE -> builder.title = reader.nextString()
-                ABSTRACT -> builder.abstract = reader.nextString()
-                URL -> builder.newsUrl = reader.nextString()
-                BYLINE -> builder.byline = reader.nextString()
+                PLACE -> builder.place = reader.nextString()
+                DATES -> builder.dates = reader.nextString()
+                CURRENTDATE -> builder.currentdate = reader.nextString()
+                CONTACTS -> builder.contacts = reader.nextString()
+                CONTENT -> builder.content = reader.nextString()
+
+
                 else -> reader.skipValue()
             }
         }
@@ -50,15 +52,14 @@ class NewsListParser : JsonParser<NewsListModel> {
     }
 
     private companion object {
-        const val STATUS = "status"
-        const val NUM_RESULTS = "num_results"
-        const val RESULTS = "results"
 
-        const val SECTION = "section"
-        const val SUBSECTION = "subsection"
         const val TITLE = "title"
-        const val ABSTRACT = "abstract"
-        const val URL = "url"
-        const val BYLINE = "byline"
+        const val PLACE = "place"
+        const val DATES = "dates"
+        const val CURRENTDATE = "currentdate"
+        const val CONTACTS = "contacts"
+        const val CONTENT = "content"
+
+
     }
 }

@@ -27,7 +27,7 @@
         android:gravity="center_vertical"
         android:paddingLeft="24dp"
         android:text="События"
-        android:textColor="#FDEE30"
+        android:textColor="@color/main"
 
         android:textSize="35sp"
 
@@ -37,8 +37,10 @@
         android:id="@+id/creeateactivity"
         android:layout_width="70dp"
         android:layout_height="70dp"
+        android:layout_marginEnd="10dp"
 
         android:background="@drawable/main_plus"
+
 
 
         />
@@ -47,6 +49,7 @@
     </LinearLayout>
 
     <FrameLayout
+
         android:id="@+id/news_list_holder"
         android:layout_marginTop="70dp"
         android:layout_width="match_parent"
@@ -108,7 +111,7 @@
             android:layout_weight="25"
             android:textSize="10dp"
             android:text="@string/main_menu_profile"
-            android:textColor="#FFFF"
+            android:textColor="@color/white"
 
 
             />
@@ -152,7 +155,7 @@
             android:layout_weight="25"
             android:textSize="10dp"
             android:text="@string/main_menu_fire"
-            android:textColor="#FFFF"
+            android:textColor="@color/white"
 
 
             />
@@ -194,7 +197,7 @@
             android:gravity="center|right"
             android:layout_weight="25"
             android:text="@string/main_menu_heart"
-            android:textColor="#FFFF"
+            android:textColor="@color/white"
             android:textSize="10dp"
 
 
@@ -239,7 +242,7 @@
             android:layout_weight="25"
             android:textSize="10dp"
             android:text="@string/main_menu_star"
-            android:textColor="#FFFF"
+            android:textColor="@color/white"
 
 
             />

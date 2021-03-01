@@ -10,15 +10,16 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class NewsListProviderImpl : NewsListProvider {
     private val api = Retrofit.Builder()
-        .baseUrl("https://api.nytimes.com")
+        .baseUrl("http://u1293020.isp.regruhosting.ru/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
         .create(Api::class.java)
 
     override fun provideNewsList(listener: NewsListListener) {
-        api.getNews("all", "all", "ZcWzm2XNqZg4NiR95W4ppQ6n9SWrBMAn").enqueue(
+        api.getNews("get").enqueue(
             object : Callback<NewsListModel> {
                 override fun onFailure(call: Call<NewsListModel>, t: Throwable) {
+                    Log.e("KEK", "errrrrrrrrorrrr, error = ${t.message}")
 
                     t.printStackTrace()
                 }

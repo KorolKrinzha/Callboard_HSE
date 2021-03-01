@@ -8,10 +8,9 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface Api {
-    @GET("/svc/news/v3/content/{source}/{section}.json")
+    @GET("/{source}")
     fun getNews(
         @Path("source") source: String,
-        @Path("section") section: String,
-        @Query("api-key") key: String
+
     ): Call<NewsListModel>
 }

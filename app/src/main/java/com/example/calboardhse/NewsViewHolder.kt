@@ -16,17 +16,17 @@ class NewsViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
     private val abstract: TextView
 
     init {
-        section = itemView.findViewById(R.id.section)
+        section = itemView.findViewById(R.id.posttime)
         title = itemView.findViewById(R.id.title)
-        abstract = itemView.findViewById(R.id.abstract_text)
+        abstract = itemView.findViewById(R.id.content)
         itemView.setOnClickListener {
 
         }
     }
 
     fun bind(model: NewsModel) {
-        section.text = "${model.section} / ${model.subsection}"
+        section.text = "${model.currentdate} / ${model.dates}"
         title.text = model.title
-        abstract.text = model.abstract
+        abstract.text = model.content
     }
 }
