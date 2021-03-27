@@ -23,7 +23,7 @@
     <string name="event_idea"><font size="30">выберите разделы</font></string>
 
 
-    <string name="menu_profile"><font size="30">Иванов Иван Иванович</font></string>
+    <string name="menu_profile"><font size="30">Новый пользователь</font></string>
 
 
     <string-array name="event_home_pickplace">
