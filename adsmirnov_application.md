@@ -2,7 +2,7 @@
 
 ### Группа: 10 - МИ - 3
 ### Электронная почта: ar.smirnov2015@mail.ru
-### VK: https://vk.com/id559309569
+### VK: https://vk.com/korol_krinzha
 
 
 **[ НАЗВАНИЕ ПРОЕКТА ]**
