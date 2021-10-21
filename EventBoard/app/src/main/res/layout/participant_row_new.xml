@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    >
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginStart="7dp"
+
+        android:background="@drawable/event_background"
+        >
+
+        <TextView
+
+            android:id="@+id/username_text"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:textAlignment="gravity"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:text="Sample text"
+            android:textColor="@android:color/white"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+
+
+            />
+        <LinearLayout
+            android:id="@+id/fullname_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/username_text">
+
+
+
+            <TextView
+
+                android:id="@+id/fullname_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="sample text"
+                android:textColor="@color/orange_bg"
+                android:textSize="25sp"
+                android:textStyle="normal"
+                android:layout_marginLeft="35dp"
+
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                            />
+
+
+
+            />
+
+
+        </LinearLayout>
+
+
+
+
+
+    </LinearLayout>
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

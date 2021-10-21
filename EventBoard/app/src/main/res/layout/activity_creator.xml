@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CreatorActivity">
+
+
+
+    <LinearLayout
+        android:id=
+            "@+id/creator_username_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="70dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/creator_username_layout_text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+
+
+            android:text="Полное имя: "
+            android:textColor="@color/orange_bg_var"
+            android:textSize="35sp"
+
+
+            >
+
+        </TextView>
+        <TextView
+
+            android:id="@+id/creator_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+
+
+
+            android:text="Sample text long to fill the gaps"
+            android:textColor="@color/blue_bg_var"
+            android:textSize="25sp"
+
+
+            >
+
+        </TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id=
+            "@+id/creator_email_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="130dp"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/creator_username_layout">
+
+        <TextView
+            android:id="@+id/creator_email_layout_text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+
+
+            android:text="Эл. почта: "
+            android:textColor="@color/orange_bg_var"
+            android:textSize="35sp"
+
+
+            >
+
+        </TextView>
+        <TextView
+
+            android:id="@+id/creator_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:editable="false"
+            android:layout_gravity="center"
+
+
+            android:text="Sample text"
+            android:textColor="@color/blue_bg_var"
+            android:textSize="25sp"
+
+
+            android:autoLink="all"
+
+
+            >
+
+        </TextView>
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/creator_text_events"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="События организатора"
+        android:textStyle="bold"
+        android:textSize="25dp"
+
+        android:gravity="center"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf=
+            "@+id/creator_email_layout"
+        >
+    </TextView>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview_editor_events"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layoutManager=
+            "androidx.recyclerview.widget.LinearLayoutManager"
+        android:overScrollMode="never"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf=
+            "@+id/creator_text_events"/>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

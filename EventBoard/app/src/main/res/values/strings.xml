@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">EventBoard</string>
+    <string name="action_settings">Settings</string>
+    <!-- Bottom nav -->
+    <string name="nav_home">Главная</string>
+    <string name="nav_favourites">Участие</string>
+    <string name="nav_recommended">Супер!</string>
+    <string name="nav_actions">Ваши ивенты</string>
+    <string name="nav_creator">Создатель события</string>
+    <string name="nav_participants">Участники события</string>
+
+
+    <!-- AlertDialog options -->
+    <string name="OK">Да!</string>
+    <string name="Cancel">Отмена</string>
+
+
+    <!-- Privilege button options -->
+    <string name="single_event_agree">УЧАСТВОВАТЬ!</string>
+    <string name="single_event_edit">РЕДАКТИРОВАТЬ</string>
+    <string name="single_event_disagree">ОТКАЗАТЬСЯ</string>
+
+
+    <!-- Profile settings -->
+    <string name="profile_email">Почта</string>
+    <string name="profile_password">Пароль</string>
+    <string name="profile_fullname">Полное имя</string>
+    <string name="profile_username">Никнейм</string>
+
+    <!-- Spinner options -->
+    <array name="places">
+        <item>Ляля</item>
+        <item>БХ</item>
+        <item>Солянка</item>
+        <item>Колобок</item>
+    </array>
+
+
+</resources>

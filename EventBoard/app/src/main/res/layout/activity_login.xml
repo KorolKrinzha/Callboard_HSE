@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity"
+    android:background="@color/blue_bg">
+
+
+
+    <EditText
+        android:id="@+id/email_edittext_login"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:background="@android:color/white"
+        android:layout_gravity="center"
+        android:maxLines="1"
+        android:hint="@string/profile_email"
+
+        android:layout_marginTop="0dp" />
+
+    <EditText
+        android:id="@+id/password_edittext_login"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:background="@android:color/white"
+        android:layout_gravity="center"
+        android:maxLines="1"
+        android:hint="@string/profile_password"
+        android:layout_marginTop="120dp"/>
+
+    <Button
+        android:id="@+id/login_button_login"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="60dp"
+        android:text="ЗАРЕГИСТРИРОВАТЬСЯ"
+        android:backgroundTint="@color/orange_bg"
+
+
+        />
+
+
+    <TextView
+        android:id="@+id/back_to_register"
+
+
+        android:text="Вернуться на регистрацию"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="120dp"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+
+        />
+
+
+
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

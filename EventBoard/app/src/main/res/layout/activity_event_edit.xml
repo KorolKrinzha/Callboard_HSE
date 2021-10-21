@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".EventEditActivity">
+
+
+<ScrollView
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+
+
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintStart_toStartOf="parent">
+
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="0dp"
+android:orientation="vertical"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintStart_toStartOf="parent"
+android:gravity="center"
+>
+
+
+<LinearLayout
+    android:id=
+        "@+id/edit_event_tittle_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="70dp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <TextView
+        android:id="@+id/edit_event_tittle_sample"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+
+
+        android:text="Название: "
+        android:textColor="@color/orange_bg_var"
+        android:textSize="35sp"
+
+
+        >
+
+    </TextView>
+    <EditText
+
+        android:id="@+id/edit_event_tittle_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+
+        android:layout_gravity="center"
+        android:maxLines="1"
+        android:textAlignment="center"
+        android:background="@android:color/white"
+
+
+        android:text="Sample text"
+        android:textColor="@color/blue_bg_var"
+        android:textSize="25sp"
+        android:maxLength="30"
+
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="30dp"
+        >
+
+    </EditText>
+</LinearLayout>
+
+
+
+
+<LinearLayout
+    android:id=
+        "@+id/edit_event_place_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="70dp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <TextView
+        android:id="@+id/edit_event_place_sample"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+
+
+        android:text="Место: "
+        android:textColor="@color/orange_bg_var"
+        android:textSize="35sp"
+
+
+        >
+
+    </TextView>
+    <Spinner
+
+        android:id="@+id/edit_event_place_spinner"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_gravity="center"
+
+
+        >
+
+    </Spinner>
+</LinearLayout>
+
+<LinearLayout
+    android:id=
+        "@+id/edit_event_datetime_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="70dp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf=
+        "@id/edit_event_place_layout">
+
+
+
+    <TextView
+        android:id=
+            "@+id/edit_event_datetime_sample"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+
+
+        android:text="Дата: "
+        android:textColor="@color/orange_bg_var"
+        android:textSize="35sp"
+
+
+        >
+
+    </TextView>
+
+
+    <DatePicker
+
+        android:id=
+            "@+id/edit_event_datetime_datepicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:foregroundGravity="center"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:datePickerMode="spinner"
+        android:calendarViewShown="false"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_event_place_layout">
+
+    </DatePicker>
+
+
+
+</LinearLayout>
+
+
+<LinearLayout
+    android:id=
+        "@+id/edit_event_description_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="70dp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf=
+        "@id/edit_event_datetime_layout">
+
+
+    <TextView
+        android:id=
+            "@+id/edit_event_description_sample"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+
+
+        android:text="Описание: "
+        android:textColor="@color/orange_bg_var"
+        android:textSize="35sp"
+
+
+        >
+
+    </TextView>
+
+    <EditText
+
+        android:id="@+id/edit_event_description_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="top|center_vertical"
+        android:layout_gravity="start"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+
+        android:text="Sample text"
+        android:textColor="@color/blue_bg_var"
+        android:textSize="35sp"
+
+
+        android:clickable="true"
+        android:autoLink="all"
+        >
+
+    </EditText>
+
+
+</LinearLayout>
+
+
+<Button
+android:id="@+id/edit_event_change_button"
+android:layout_width="match_parent"
+android:layout_height="70dp"
+android:layout_gravity="bottom"
+android:backgroundTint="@color/black"
+android:text="ИЗМЕНИТЬ СОБЫТИЕ"
+
+android:layout_marginTop="50dp"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toBottomOf="@id/edit_event_description_layout"
+
+
+/>
+
+<Button
+android:id="@+id/edit_event_delete_button"
+android:layout_width="match_parent"
+android:layout_height="70dp"
+android:layout_gravity="bottom"
+android:backgroundTint="@color/red"
+
+
+android:text="УДАЛИТЬ СОБЫТИЕ"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toBottomOf="@id/edit_event_change_button"
+
+
+/>
+</LinearLayout>
+
+
+</ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

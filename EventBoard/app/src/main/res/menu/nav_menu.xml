@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/mmenu_signout"
+        android:icon="@drawable/ic_exit"
+        
+        android:title="Выйти"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/menu_account"
+        android:title="Профиль"
+        android:icon="@drawable/ic_account"
+        app:showAsAction="ifRoom"/>
+    <item
+            android:id="@+id/menu_new_event"
+            android:title="Новый ивент"
+            android:icon="@drawable/ic_plus"
+            app:showAsAction="ifRoom"/>
+
+
+</menu>
+
+
+
+
+
+
