@@ -14,6 +14,12 @@
     <string name="OK">Да!</string>
     <string name="Cancel">Отмена</string>
 
+    <string name="event_tittle">Название</string>
+    <string name="event_datetime">Дата</string>
+    <string name="event_place">Место</string>
+    <string name="event_description">Описание</string>
+    <string name="event_creator">Организатор</string>
+
 
     <!-- Privilege button options -->
     <string name="single_event_agree">УЧАСТВОВАТЬ!</string>

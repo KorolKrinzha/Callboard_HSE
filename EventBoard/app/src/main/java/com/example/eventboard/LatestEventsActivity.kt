@@ -133,21 +133,25 @@ class LatestEventsActivity : AppCompatActivity() {
 
 
                         val event = Event(
-                            document.id.toString(),
+                            document.id,
                             document.data.get("tittle").toString(),
                             document.data.get("datetime").toString(),
                             document.data.get("place").toString(),
                             document.data.get("description").toString(),
                             document.data.get("creator").toString())
-                        adapter.add(EventItem(event))
+                        if(event.checkDate()) {
+                            adapter.add(EventItem(event))
 
-                        adapter.setOnItemClickListener { item, view ->
-                            val eventItem = item as EventItem
 
-                            val intent = Intent(this, EventAgreeActivity::class.java)
-                            intent.putExtra(EVENT_KEY, eventItem.event)
 
-                            startActivity(intent)
+                            adapter.setOnItemClickListener { item, view ->
+                                val eventItem = item as EventItem
+
+                                val intent = Intent(this, EventAgreeActivity::class.java)
+                                intent.putExtra(EVENT_KEY, eventItem.event)
+
+                                startActivity(intent)
+                            }
                         }
                     }
                 }

@@ -42,8 +42,8 @@ android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
 
-
-        android:text="Название: "
+        android:fontFamily="@font/major_family"
+        android:text="@string/event_tittle"
         android:textColor="@color/orange_bg_var"
         android:textSize="35sp"
 
@@ -59,15 +59,16 @@ android:gravity="center"
 
 
         android:layout_gravity="center"
-        android:maxLines="1"
+        
         android:textAlignment="center"
         android:background="@android:color/white"
 
 
         android:text="Sample text"
-        android:textColor="@color/blue_bg_var"
+        android:textColor="@color/black"
+        android:fontFamily="@font/major_family"
         android:textSize="25sp"
-        android:maxLength="30"
+        
 
         android:layout_marginStart="15dp"
         android:layout_marginEnd="30dp"
@@ -96,7 +97,8 @@ android:gravity="center"
         android:layout_height="match_parent"
 
 
-        android:text="Место: "
+        android:text="@string/event_place"
+        android:fontFamily="@font/major_family"
         android:textColor="@color/orange_bg_var"
         android:textSize="35sp"
 
@@ -114,6 +116,7 @@ android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_gravity="center"
+
 
 
         >
@@ -143,9 +146,10 @@ android:gravity="center"
 
 
 
-        android:text="Дата: "
+        android:text="@string/event_datetime"
         android:textColor="@color/orange_bg_var"
         android:textSize="35sp"
+        android:fontFamily="@font/major_family"
 
 
         >
@@ -196,9 +200,10 @@ android:gravity="center"
 
 
 
-        android:text="Описание: "
+        android:text="@string/event_description"
         android:textColor="@color/orange_bg_var"
         android:textSize="35sp"
+        android:fontFamily="@font/major_family"
 
 
         >
@@ -216,7 +221,7 @@ android:gravity="center"
         android:layout_marginEnd="20dp"
 
         android:text="Sample text"
-        android:textColor="@color/blue_bg_var"
+        android:textColor="@color/black"
         android:textSize="35sp"
 
 

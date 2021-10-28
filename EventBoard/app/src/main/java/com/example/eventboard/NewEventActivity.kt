@@ -67,7 +67,7 @@ class NewEventActivity : AppCompatActivity() {
     private fun perfromNewEvent() {
         val tittle = new_event_tittle.text.toString()
         val description = new_event_description.text.toString()
-        val datetime = Date(new_event_datetime.year,
+        var datetime = Date(new_event_datetime.year,
             new_event_datetime.month+1,
             new_event_datetime.dayOfMonth)
 
@@ -106,11 +106,15 @@ class NewEventActivity : AppCompatActivity() {
 
             val db: FirebaseFirestore? = FirebaseFirestore.getInstance()
             val event: MutableMap<String, Any> = HashMap()
+            datetime = Date(new_event_datetime.year,
+                new_event_datetime.month,
+                new_event_datetime.dayOfMonth)
+
+
             event["tittle"] = tittle
             event["place"] = place
-            event["datetime"] = "${new_event_datetime.dayOfMonth}." +
-                    "${new_event_datetime.month+1}." +
-                    "${new_event_datetime.year}"
+            event["datetime"] =
+                    SimpleDateFormat("dd.MM").format(datetime)+"."+"${new_event_datetime.year}"
             event["description"] = description
             event["creator"] = creator
 

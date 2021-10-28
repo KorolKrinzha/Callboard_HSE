@@ -8,6 +8,7 @@
     >
 
     <LinearLayout
+        android:id="@+id/event_layout"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:orientation="vertical"
@@ -33,6 +34,7 @@
             android:maxLines="1"
             android:textSize="30sp"
             android:textStyle="bold"
+            android:fontFamily="@font/secondary_family"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
 
@@ -47,8 +49,9 @@
             android:layout_height="wrap_content"
 
             android:text="Sample text"
-            android:textColor="@color/orange_bg"
-            android:textSize="25sp"
+            android:textColor="@color/white"
+            android:textSize="23sp"
+            android:fontFamily="@font/secondary_family"
             android:textStyle="normal"
             android:layout_marginLeft="35dp"
 

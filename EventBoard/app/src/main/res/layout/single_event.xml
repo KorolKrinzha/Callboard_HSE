@@ -4,7 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:textColor="@color/blue_bg_var">
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="20dp"
+
+    >
 
 
 
@@ -25,28 +28,83 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:gravity="center"
+
         >
+        <LinearLayout
+            android:id=
+                "@+id/single_event_text_tittle_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="40dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/single_event_text_tittle_sample"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+
+
+                android:text="@string/event_tittle"
+                android:textColor="@color/white"
+                android:background="@drawable/text_sample_background"
+                android:textSize="35sp"
+
+                android:fontFamily="@font/major_family"
+
+
+
+                >
+
+            </TextView>
+            <TextView
+
+                android:id="@+id/single_event_text_tittle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="30dp"
+
+
+
+                android:text="Sample text"
+
+                android:textColor="@color/black"
+                android:fontFamily="@font/major_family"
+                android:textSize="35sp"
+
+
+                >
+
+            </TextView>
+        </LinearLayout>
 
     <LinearLayout
         android:id=
             "@+id/single_event_text_place_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="@id/single_event_text_tittle_layout">
 
         <TextView
-            android:id="@+id/single_event_text_place_layout_sample"
+            android:id="@+id/single_event_text_place_sample"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
 
 
-            android:text="Место: "
-            android:textColor="@color/orange_bg_var"
+            android:text="@string/event_place"
+            android:textColor="@color/white"
+            android:background="@drawable/text_sample_background"
             android:textSize="35sp"
+
+            android:fontFamily="@font/major_family"
+
 
 
             >
@@ -57,12 +115,15 @@
         android:id="@+id/single_event_text_place"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:editable="false"
+        android:layout_gravity="start"
+        android:layout_marginStart="30dp"
 
 
 
         android:text="Sample text"
-        android:textColor="@color/blue_bg_var"
+
+        android:textColor="@color/black"
+        android:fontFamily="@font/major_family"
         android:textSize="35sp"
 
 
@@ -76,9 +137,9 @@
             "@+id/single_event_text_datetime_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf=
             "@id/single_event_text_place_layout">
@@ -87,14 +148,15 @@
 
         <TextView
             android:id=
-                "@+id/single_event_text_datetime_layout_sample"
+                "@+id/single_event_text_datetime_sample"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
 
 
-            android:text="Дата: "
-            android:textColor="@color/orange_bg_var"
+            android:text="@string/event_datetime"
+            android:textColor="@color/white"
+            android:background="@drawable/text_sample_background"
             android:textSize="35sp"
 
 
@@ -115,8 +177,11 @@
             android:text="Sample text"
 
 
-            android:textColor="@color/blue_bg_var"
+            android:textColor="@color/black"
+            android:fontFamily="@font/major_family"
             android:textSize="35sp"
+            android:layout_gravity="start"
+            android:layout_marginStart="30dp"
 
 
             app:layout_constraintStart_toStartOf="parent"
@@ -135,8 +200,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf=
             "@id/single_event_text_datetime_layout">
@@ -144,14 +209,16 @@
 
         <TextView
             android:id=
-                "@+id/single_event_text_description_layout_sample"
+                "@+id/single_event_text_description_sample"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/text_sample_background"
 
 
 
-            android:text="Описание: "
-            android:textColor="@color/orange_bg_var"
+
+            android:text="@string/event_description"
+            android:textColor="@color/white"
             android:textSize="35sp"
 
 
@@ -170,12 +237,14 @@
         android:layout_marginEnd="20dp"
 
         android:text="Sample text"
-        android:textColor="@color/blue_bg_var"
+
+        android:textColor="@color/black"
+        android:fontFamily="@font/major_family"
         android:textSize="35sp"
 
 
-        android:clickable="true"
         android:autoLink="all"
+
         >
 
     </TextView>
@@ -190,7 +259,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="50dp"
         android:layout_marginBottom="200dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf=
@@ -199,12 +268,14 @@
 
     <TextView
         android:id=
-            "@+id/single_event_text_creator_layout_sample"
+            "@+id/single_event_text_creator_sample"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:text="Организатор:  "
-        android:textColor="@color/orange_bg_var"
+        android:text="@string/event_creator"
+        android:fontFamily="@font/major_family"
+        android:textColor="@color/white"
+        android:background="@drawable/text_sample_background"
         android:textSize="35sp"
 
 
@@ -219,8 +290,12 @@
     android:layout_height="wrap_content"
     android:gravity="top|center_vertical"
     android:text="Sample text"
-    android:layout_gravity="center"
-    android:textColor="@color/blue_bg_var"
+    android:layout_gravity="start"
+    android:layout_marginStart="30dp"
+
+
+    android:textColor="@color/black"
+    android:fontFamily="@font/major_family"
     android:textSize="35sp"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@id/single_event_text_description"

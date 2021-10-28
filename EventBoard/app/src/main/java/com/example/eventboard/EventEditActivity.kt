@@ -10,6 +10,7 @@ import androidx.appcompat.app.AlertDialog
 import com.example.eventboard.bottom_nav_activities.MyEventsActivity
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_event_edit.*
+import kotlinx.android.synthetic.main.new_event.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -120,7 +121,7 @@ class EventEditActivity : AppCompatActivity() {
                             val new_tittle = edit_event_tittle_text.text.toString()
                             val new_description = edit_event_description_text.text.toString()
                             val new_place = place_spinner.selectedItem.toString()
-                            val new_datetime = Date(edit_event_datetime_datepicker.year,
+                            var new_datetime: Date = Date(edit_event_datetime_datepicker.year,
                                 edit_event_datetime_datepicker.month+1,
                                 edit_event_datetime_datepicker.dayOfMonth)
 
@@ -146,11 +147,13 @@ class EventEditActivity : AppCompatActivity() {
                             }
 
 
-
+                            new_datetime = Date(edit_event_datetime_datepicker.year,
+                                edit_event_datetime_datepicker.month,
+                                edit_event_datetime_datepicker.dayOfMonth)
                             val new_datetime_string =
-                                "${edit_event_datetime_datepicker.dayOfMonth}." +
-                                "${edit_event_datetime_datepicker.month+1}." +
-                                "${edit_event_datetime_datepicker.year}"
+                                SimpleDateFormat("dd.MM").
+                                format(new_datetime)+"."+"${edit_event_datetime_datepicker.year}"
+
                             val newevent = Event(editevent.id,
                                 new_tittle,
                                 new_datetime_string,

@@ -130,14 +130,16 @@ class FavoritesActivities : AppCompatActivity() {
                                 document.data?.get("place").toString(),
                                 document.data?.get("description").toString(),
                                 document.data?.get("creator").toString())
-                            adapter.add(EventItem(event))
-                            adapter.setOnItemClickListener { item, view ->
-                                val eventItem = item as EventItem
+                            if (event.checkDate()) {
+                                adapter.add(EventItem(event))
+                                adapter.setOnItemClickListener { item, view ->
+                                    val eventItem = item as EventItem
 
-                                val intent = Intent(this, EventAgreeActivity::class.java)
-                                intent.putExtra(EVENT_KEY, eventItem.event)
+                                    val intent = Intent(this, EventAgreeActivity::class.java)
+                                    intent.putExtra(EVENT_KEY, eventItem.event)
 
-                                startActivity(intent)
+                                    startActivity(intent)
+                                }
                             }
 
 

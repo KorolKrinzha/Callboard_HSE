@@ -4,6 +4,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.parcel.Parcelize
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.HashMap
 
 @Parcelize
 class Event(val id:String, val tittle:String, val datetime:String, val place:String, val description:String, val creator:String ):Parcelable {
@@ -103,6 +106,32 @@ class Event(val id:String, val tittle:String, val datetime:String, val place:Str
 
     }
 
+
+
+
+    fun checkDate():Boolean {
+        val currentDateString = SimpleDateFormat("yyyy.MM.dd").format(Calendar.getInstance().time)
+        val currentDate: Date = Date(
+            currentDateString.slice(0..3).toInt(),
+            currentDateString.slice(5..6).toInt(),
+            currentDateString.slice(8..9).toInt()
+        )
+
+        if (datetime.length == 10) {
+            val datetime_Date: Date = Date(
+                datetime.slice(6..9).toInt(),
+                datetime.slice(3..4).toInt(),
+                datetime.slice(0..1).toInt()
+            )
+
+            if (currentDate.compareTo(datetime_Date) != 1) {
+                return true
+            }
+
+
+        }
+        return false
+    }
 
 
 

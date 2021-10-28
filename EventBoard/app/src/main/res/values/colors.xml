@@ -2,6 +2,9 @@
 <resources>
     <color name="blue_bg">#006EF1</color>
     <color name="blue_bg_var">#0028F1</color>
+    <color name="events_color">#0028F1</color>
+    <color name="blue_event_text">#4285f4</color>
+
     <color name="orange_bg">#FAB121</color>
     <color name="orange_bg_var">#F18300</color>
     <color name="red">#CF0909</color>

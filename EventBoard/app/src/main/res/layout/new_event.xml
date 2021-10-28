@@ -26,9 +26,9 @@
             android:layout_width="320dp"
             android:layout_height="wrap_content"
 
-            android:maxLines="1"
+            
             android:textAlignment="center"
-            android:maxLength="30"
+            
 
 
 
