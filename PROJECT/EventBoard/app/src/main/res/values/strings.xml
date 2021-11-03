@@ -3,8 +3,8 @@
     <string name="action_settings">Settings</string>
     <!-- Bottom nav -->
     <string name="nav_home">Главная</string>
-    <string name="nav_favourites">Участие</string>
-    <string name="nav_recommended">Супер!</string>
+    <string name="nav_favourites">Посещаемые</string>
+    <string name="nav_recommended">Рекомендации</string>
     <string name="nav_actions">Ваши ивенты</string>
     <string name="nav_creator">Создатель события</string>
     <string name="nav_participants">Участники события</string>
@@ -17,7 +17,7 @@
     <string name="event_tittle">Название</string>
     <string name="event_datetime">Дата</string>
     <string name="event_place">Место</string>
-    <string name="event_description">Описание</string>
+    <string name="event_description">Описание и контакты</string>
     <string name="event_creator">Организатор</string>
 
 

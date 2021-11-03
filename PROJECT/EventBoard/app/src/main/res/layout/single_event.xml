@@ -73,7 +73,7 @@
 
                 android:textColor="@color/black"
                 android:fontFamily="@font/major_family"
-                android:textSize="35sp"
+                android:textSize="25sp"
 
 
                 >
@@ -124,7 +124,7 @@
 
         android:textColor="@color/black"
         android:fontFamily="@font/major_family"
-        android:textSize="35sp"
+        android:textSize="25sp"
 
 
         >
@@ -179,7 +179,7 @@
 
             android:textColor="@color/black"
             android:fontFamily="@font/major_family"
-            android:textSize="35sp"
+            android:textSize="25sp"
             android:layout_gravity="start"
             android:layout_marginStart="30dp"
 
@@ -240,7 +240,7 @@
 
         android:textColor="@color/black"
         android:fontFamily="@font/major_family"
-        android:textSize="35sp"
+        android:textSize="25sp"
 
 
         android:autoLink="all"
@@ -296,7 +296,7 @@
 
     android:textColor="@color/black"
     android:fontFamily="@font/major_family"
-    android:textSize="35sp"
+    android:textSize="25sp"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@id/single_event_text_description"
         >
