@@ -61,7 +61,7 @@ class EventAgreeActivity : AppCompatActivity() {
 
 
 
-                //event?.performDelete()
+
 
             }
         }
@@ -147,7 +147,7 @@ class EventAgreeActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item?.itemId){
+        when(item.itemId){
             R.id.nav_creator-> {
                 val intent = Intent(this, CreatorActivity::class.java)
 
@@ -176,10 +176,8 @@ class EventAgreeActivity : AppCompatActivity() {
     private fun fetchSingleEvent(id: String) {
         val adapter = GroupAdapter<ViewHolder>()
         val db = FirebaseFirestore.getInstance()
-        val ref = db.collection("events")
-        val ex = ref.document(id)
-
-        ex.get()
+        db.collection("events").document(id)
+            .get()
             .addOnSuccessListener { document ->
                 if (document != null) {
                     val event = Event(

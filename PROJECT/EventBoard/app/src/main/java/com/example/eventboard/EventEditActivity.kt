@@ -56,10 +56,10 @@ class EventEditActivity : AppCompatActivity() {
 
 
         val db = FirebaseFirestore.getInstance()
-        val ref = db.collection("events")
-        val ex = ref.document(event_id)
+        db.collection("events")
+        .document(event_id)
 
-        ex.get()
+        .get()
             .addOnSuccessListener { document ->
                 if (document != null) {
 

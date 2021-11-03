@@ -53,22 +53,6 @@ class SingleEventItem(val event: Event): Item<ViewHolder>(){
     }
 
 
-    private fun checkSpecial(viewHolder: ViewHolder) {
-        val db = FirebaseFirestore.getInstance()
-        db.collection("events").document(event.id).
-        get().addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-
-                val recommended = task.result?.data?.get("recommended")
-
-                if (recommended==true) {
-//                    viewHolder.itemView.single_event_text_description.autoLinkMask=1
-
-                }
-
-            }
-        }
-    }
 
 
 
