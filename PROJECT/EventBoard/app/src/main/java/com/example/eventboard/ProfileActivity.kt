@@ -9,7 +9,8 @@ import com.example.eventboard.bottom_nav_activities.FavoritesActivities
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_profile.*
-
+// Не путать с CreatorActivity -  вот это вот профиль самого пользователя,
+// где он может менять инфу о себе
 class ProfileActivity : AppCompatActivity() {
 
     companion object{
@@ -59,9 +60,9 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         val db = FirebaseFirestore.getInstance()
-        
-        val ref = db.collection("users").document(userDocumentId)
-        ref
+        // Обновляем бд новым данными, введенными пользователем
+        db.collection("users").document(userDocumentId)
+
             .update(
                 mapOf(
                     "fullname" to profile_fullname,
@@ -75,6 +76,7 @@ class ProfileActivity : AppCompatActivity() {
                 "Ошибка при обновлении параметров, попробуйте еще раз", Toast.LENGTH_LONG).show() }
     }
 
+    // Датой из бд заполняем поля о почте, имени и нике
     private fun getData() {
         val uid = FirebaseAuth.getInstance().uid.toString()
         val db = FirebaseFirestore.getInstance()
@@ -85,7 +87,7 @@ class ProfileActivity : AppCompatActivity() {
                     task ->
                 if (task.isSuccessful) {
                     for (document in task.result!!) {
-                        userDocumentId = document.id.toString()
+                        userDocumentId = document.id
 
 
                         profile_email.setText(document.data.get("email").toString())
@@ -98,6 +100,7 @@ class ProfileActivity : AppCompatActivity() {
 
 
     private fun gotoUrl(url:String) {
+        // Переход по ссылкам
         val intent = Intent(Intent.ACTION_VIEW)
         intent.data = Uri.parse(url)
         startActivity(intent)

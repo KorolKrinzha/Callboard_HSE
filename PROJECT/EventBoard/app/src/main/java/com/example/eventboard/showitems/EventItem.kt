@@ -33,7 +33,7 @@ class EventItem(val event: Event): Item<ViewHolder>(){
         return R.layout.event_row_new
     }
 
-
+    // косметическая вещь - длинные названия на конце становятся многоточием
     private fun checkLength(viewHolder: ViewHolder){
         if (event.tittle.length>21){
             val tittle_event_shorten = event.tittle.slice(0..20)+"..."
@@ -43,7 +43,8 @@ class EventItem(val event: Event): Item<ViewHolder>(){
 
 
 
-
+// Перекрашиваем особвые события в красное, чтобы привлечь внимание
+// точнее это не обязательно перекрас, мы просто меняем "задник" события
     private fun checkSpecial(viewHolder: ViewHolder) {
         val db = FirebaseFirestore.getInstance()
         db.collection("events").document(event.id).

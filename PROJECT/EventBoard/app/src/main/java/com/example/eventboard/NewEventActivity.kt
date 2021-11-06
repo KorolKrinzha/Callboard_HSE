@@ -20,6 +20,8 @@ class NewEventActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.new_event)
         supportActionBar?.title = "Создать событие"
+        // здесь задаем опции для спиннера
+
         val place_spinner = new_event_place
         ArrayAdapter.createFromResource(
             this,
@@ -45,7 +47,7 @@ class NewEventActivity : AppCompatActivity() {
 
             builder.setPositiveButton(R.string.OK) { dialog, which ->
 
-                perfromNewEvent()
+                performNewEvent()
             }
 
             builder.setNegativeButton(R.string.Cancel) { dialog, which ->
@@ -64,7 +66,7 @@ class NewEventActivity : AppCompatActivity() {
 
     }
 
-    private fun perfromNewEvent() {
+    private fun performNewEvent() {
         val tittle = new_event_tittle.text.toString()
         val description = new_event_description.text.toString()
         var datetime = Date(new_event_datetime.year,
@@ -72,7 +74,9 @@ class NewEventActivity : AppCompatActivity() {
             new_event_datetime.dayOfMonth)
 
 
-
+        // то же, что и в классе Event
+        // TODO улучшить верификацию даты
+        // а то сейчас занимамет много места и путается под глазами
         val currentDateString = SimpleDateFormat("yyyy.MM.dd").
         format( Calendar.getInstance().time)
         val currentDate:Date = Date(
@@ -86,14 +90,14 @@ class NewEventActivity : AppCompatActivity() {
 
 
 
-        val place = new_event_place.selectedItem.toString()
+        val place = new_event_place.selectedItem.toString() //слушаем выбор спиннера
         val creator: String = FirebaseAuth.getInstance().uid.toString()
         if (tittle.isEmpty() || description.isEmpty() || datetime.toString().isEmpty() || place.isEmpty()) {
                 Toast.makeText(this,
                     "Пожалуйста, заполните все поля", Toast.LENGTH_SHORT).show()
                 return
             }
-
+        // верификация
         if (currentDate.compareTo(datetime)==1){
             Toast.makeText(this,
                 "Пожалуйста, укажите правильную дату", Toast.LENGTH_SHORT).show()
@@ -104,7 +108,7 @@ class NewEventActivity : AppCompatActivity() {
 
         else{
 
-            val db: FirebaseFirestore? = FirebaseFirestore.getInstance()
+            val db: FirebaseFirestore = FirebaseFirestore.getInstance()
             val event: MutableMap<String, Any> = HashMap()
             datetime = Date(new_event_datetime.year,
                 new_event_datetime.month,
@@ -113,6 +117,8 @@ class NewEventActivity : AppCompatActivity() {
 
             event["tittle"] = tittle
             event["place"] = place
+            // запись datetime пока занимает много места в коде
+            //НО это необходимо, чтобы верифицировать дату (см. метод checkDate класса Event)
             event["datetime"] =
                     SimpleDateFormat("dd.MM").format(datetime)+"."+"${new_event_datetime.year}"
             event["description"] = description
@@ -120,20 +126,23 @@ class NewEventActivity : AppCompatActivity() {
 
 
 
-            db!!.collection("events").add(event).addOnSuccessListener { documentReference ->
-                    val newevent = Event(documentReference.id.toString(),
+            db.collection("events").add(event).addOnSuccessListener { documentReference ->
+                    val newevent = Event(
+                        documentReference.id,
                         event["tittle"].toString(),
                     event["datetime"].toString(),
                     event["place"].toString(),
                     event["description"].toString(),
                         event["creator"].toString())
-                newevent.performAgree()
+                newevent.performAgree() // организатор - участник, таков путь
+
                 
             }
 
 
             val intent = Intent(this, LatestEventsActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+            // избавляемся от активности
             startActivity(intent)
 
         }

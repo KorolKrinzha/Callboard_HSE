@@ -24,7 +24,9 @@ class EventAgreeActivity : AppCompatActivity() {
         super.onResume()
         val event = intent.getParcelableExtra<Event>(LatestEventsActivity.EVENT_KEY)
         supportActionBar?.title = "${event?.tittle}"
-        // TODO update title after editting
+        // TODO обновить actionbar после редактирования
+        //апдейт: я понял, в чем проблема. Выход, который я вижу - еще раз вызов бд
+        // Пока не собираюсь делать обновление, тк нагрузит и код, и бд, и приложение:(
         fetchSingleEvent(event?.id.toString())    }
 
 
@@ -34,6 +36,7 @@ class EventAgreeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_event_agree)
 
         val event = intent.getParcelableExtra<Event>(LatestEventsActivity.EVENT_KEY)
+        // из активности LatestEventsActivity получаем объект класса Event
         supportActionBar?.title = "${event?.tittle}"
         EVENT_ID_CREATOR = event?.creator.toString()
         EVENT_ID = event?.id.toString()
@@ -41,7 +44,8 @@ class EventAgreeActivity : AppCompatActivity() {
 
         fetchSingleEvent(event?.id.toString())
 
-
+        // Это некоторый вариант Sample text. Если код или бд даст сбой,
+        // пользователь точно поймет, что произошла ошибка
         single_event_button.setBackgroundColor(getResources().getColor(R.color.red))
         single_event_button.setText("(~_~;)")
 
@@ -57,6 +61,8 @@ class EventAgreeActivity : AppCompatActivity() {
                 val intent = Intent(this, EventEditActivity::class.java)
                 intent.putExtra("EVENT_ID_EDIT", event?.id)
                 startActivity(intent)
+                // если атрибут creator совпадает с айди пользователя, он создатель
+                // кнопка позволяет ему перейти на активность редакции
 
 
 
@@ -65,6 +71,7 @@ class EventAgreeActivity : AppCompatActivity() {
 
             }
         }
+        // если не редактор, возможны два случая: участник или нет
         else{
             db.collection("event_participants")
                 .document(event?.id.toString())
@@ -72,6 +79,7 @@ class EventAgreeActivity : AppCompatActivity() {
                 .addOnSuccessListener { document ->
                     if (document != null) {
                         val participants = document.data?.get("participants") as? List<String>
+                        // поле participants это массив. Смотрим, содержит ли он айди юзера
                         if (participants?.contains(uid) == true){
 
                             single_event_button.setBackgroundColor(getResources().
@@ -105,6 +113,7 @@ class EventAgreeActivity : AppCompatActivity() {
 
 
                         }
+                        // если не содержит, он может им стать
                         else{
                             single_event_button.setBackgroundColor(getResources().
                             getColor(R.color.blue_bg_var))
@@ -140,7 +149,7 @@ class EventAgreeActivity : AppCompatActivity() {
 
     }
 
-
+    // меню вверху
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.nav_menu_creator, menu)
         return super.onCreateOptionsMenu(menu)
@@ -153,12 +162,16 @@ class EventAgreeActivity : AppCompatActivity() {
 
 
                 intent.putExtra(EVENT_ID_CREATOR, EVENT_ID_CREATOR)
-
+                // теперь CreatorActivity это не только просмотр создателя,
+                // но и любого другого пользователя
+                // но в данном случае приложение перенесет нас именно в профиль создателя,
+                // так как в качве аргумента использован EVENT_ID_CREATOR
 
                 startActivity(intent)
             }
             R.id.nav_participants-> {
                 val intent = Intent(this, ParticipantsActivity::class.java)
+                // Просмотр участников
 
                 intent.putExtra(EVENT_ID, EVENT_ID)
                 startActivity(intent)
@@ -189,11 +202,7 @@ class EventAgreeActivity : AppCompatActivity() {
                         document.data?.get("creator").toString()
                     )
 
-                    if (event != null) {
-                        adapter.add(SingleEventItem(event))
-                    } else {
-
-                    }
+                    adapter.add(SingleEventItem(event))
 
 
                 } else {
@@ -214,8 +223,8 @@ class EventAgreeActivity : AppCompatActivity() {
 
     companion object{
 
-        var EVENT_ID_CREATOR:String = "EVENT_ID_CREATOR"
-        var EVENT_ID:String = "EVENT_ID"
+        var EVENT_ID_CREATOR:String = "EVENT_ID_CREATOR" // id создателя
+        var EVENT_ID:String = "EVENT_ID" // id события
 
     }
 

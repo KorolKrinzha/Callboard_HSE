@@ -4,7 +4,6 @@ import Event
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -54,6 +53,7 @@ class LatestEventsActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         val intent = Intent(this, RegisterActivity::class.java)
+        // по возвращению избавляемся от лишних активностей
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
 
         
@@ -62,6 +62,7 @@ class LatestEventsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.Theme_MyApplication)
+        // минус дарк тема
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         super.onCreate(savedInstanceState)
@@ -111,7 +112,7 @@ class LatestEventsActivity : AppCompatActivity() {
 
     }
 
-
+    // пользователь не зареган - тодга в активность регистрации
     private fun verifyLogIn(){
         val uid = FirebaseAuth.getInstance().uid
         if (uid==null){
@@ -120,6 +121,7 @@ class LatestEventsActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
     private fun fetchEvents(){
         val adapter = GroupAdapter<ViewHolder>()
 
@@ -140,13 +142,14 @@ class LatestEventsActivity : AppCompatActivity() {
                             document.data.get("description").toString(),
                             document.data.get("creator").toString())
                         if(event.checkDate()) {
+                            // Если событие не устарело, то оно попадает на экран
                             adapter.add(EventItem(event))
 
 
 
                             adapter.setOnItemClickListener { item, view ->
                                 val eventItem = item as EventItem
-
+                                // Переход на активность отдельного события
                                 val intent = Intent(this, EventAgreeActivity::class.java)
                                 intent.putExtra(EVENT_KEY, eventItem.event)
 

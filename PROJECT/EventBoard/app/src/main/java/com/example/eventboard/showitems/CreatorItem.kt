@@ -9,7 +9,7 @@ class CreatorItem(val event: Event): Item<ViewHolder>(){
     override fun bind(viewHolder: ViewHolder, position: Int) {
         viewHolder.itemView.tittle_event_mainboard.text = event.tittle
         viewHolder.itemView.details_event_mainboard.text =
-            "${event.place}      ${event.datetime}"
+            "${event.place}, ${event.datetime}"
 
 
 

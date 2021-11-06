@@ -19,7 +19,8 @@ class LoginActivity : AppCompatActivity() {
             Toast.makeText(this, "Пожалуйста, введите необходимые данные", Toast.LENGTH_SHORT).show()
             return
         }
-        
+
+
         FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
             .addOnCompleteListener {
                 if (!it.isSuccessful) return@addOnCompleteListener

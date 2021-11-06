@@ -21,14 +21,15 @@ class RegisterActivity : AppCompatActivity() {
         val password = password_edittext_register.text.toString()
         val username = username_edittext_register.text.toString()
         val fullname = fullname_edittext_register.text.toString()
-        if (email.isEmpty() || password.isEmpty() || username.isEmpty()) {
+        // Проверка на заполнение всех полей
+        if (email.isEmpty() || password.isEmpty() || username.isEmpty() || fullname.isEmpty()) {
             Toast.makeText(this,
                 "Пожалуйста, введите необходимые данные",
                 Toast.LENGTH_SHORT).show()
             return
         }
 
-
+        // создание нового пользователя
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener {
                 if(!it.isSuccessful) return@addOnCompleteListener
@@ -44,12 +45,12 @@ class RegisterActivity : AppCompatActivity() {
 
     }
 
-
+// Сохраняем пользователя в бд, коллекция users
     private fun saveUserToFirebaseDatabase(username:String, fullname:String,
                                            email:String, uid:String) {
 
 
-        val db: FirebaseFirestore? = FirebaseFirestore.getInstance()
+        val db: FirebaseFirestore = FirebaseFirestore.getInstance()
         val user: MutableMap<String, Any> = HashMap()
         user["username"] = username
         user["fullname"] = fullname
@@ -58,7 +59,7 @@ class RegisterActivity : AppCompatActivity() {
 
 
 
-        db!!.collection("users")
+        db.collection("users")
             .add(user)
             .addOnSuccessListener {
 
@@ -86,6 +87,7 @@ class RegisterActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.Theme_MyApplication)
+        // минус ночной режим
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         super.onCreate(savedInstanceState)

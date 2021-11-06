@@ -13,7 +13,9 @@ import com.google.firebase.firestore.QuerySnapshot
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_creator.*
-
+// Просмотр профиля пользователя
+// TODO переименовать CreatorActivity и все методы и атрибуты так,
+//  чтобы стало ясно, что это просмотр профиля ЛЮБОГО пользователя
 class CreatorActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,8 +35,8 @@ class CreatorActivity : AppCompatActivity() {
 
 
 
-        fetchCreatorInfo(creator_id.toString())
-        fetchCreatorEvents(creator_id.toString())
+        fetchCreatorInfo(creator_id.toString()) // верхняя часть - ник, почта, имя
+        fetchCreatorEvents(creator_id.toString()) // нижняя часть инт-са - события пол-ля
 
     }
 
@@ -58,6 +60,7 @@ class CreatorActivity : AppCompatActivity() {
                     creator_username.setText("Ошибка")
                     creator_email.setText("Ошибка")
                     supportActionBar?.title = "Ошибка"
+                    // Если бд даст сбой
                 }
             }
 
@@ -78,7 +81,7 @@ class CreatorActivity : AppCompatActivity() {
 
 
                             val event = Event(
-                                document.id.toString(),
+                                document.id,
                                 document.data.get("tittle").toString(),
                                 document.data.get("datetime").toString(),
                                 document.data.get("place").toString(),

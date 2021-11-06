@@ -17,6 +17,7 @@ class ParticipantsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_participants)
         supportActionBar?.title = "Участники события"
+        // event_id мы получаем от события, с которого мы перешли на эту активность
         val event_id: String?
         event_id = if (savedInstanceState == null) {
             val extras = intent.extras
@@ -58,7 +59,9 @@ class ParticipantsActivity : AppCompatActivity() {
 
                                             val useritem = item as ParticipantItem
 
-
+                                            // хотя не все пользователи, на которых мы нажмем, создатели
+                                            // было решено, что CreatorActivity - активность для
+                                            // отображения профиля любого пользователя
                                             val intent = Intent(this, CreatorActivity::class.java)
                                             intent.putExtra(EVENT_ID_CREATOR, useritem.participant.id)
 

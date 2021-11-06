@@ -52,7 +52,7 @@ class EventEditActivity : AppCompatActivity() {
         }
 
 
-        val places = mapOf("Ляля" to 0, "БХ" to 1, "Солянка" to 2, "Колобок" to 3)
+
 
 
         val db = FirebaseFirestore.getInstance()
@@ -65,7 +65,7 @@ class EventEditActivity : AppCompatActivity() {
 
 
                     val editevent = Event(
-                        document.id.toString(),
+                        document.id,
                         document.data?.get("tittle").toString(),
                         document.data?.get("datetime").toString(),
                         document.data?.get("place").toString(),
@@ -75,11 +75,16 @@ class EventEditActivity : AppCompatActivity() {
 
                     edit_event_tittle_text.setText(editevent.tittle)
                     edit_event_description_text.setText(editevent.description)
-                    val set_places: Int? = places[editevent.place]
 
+
+                    // пользователю сразу выбирается то место, которое он указал ранее
+                    val places = mapOf("Ляля" to 0, "БХ" to 1, "Солянка" to 2, "Колобок" to 3)
+                    val set_places: Int? = places[editevent.place]
                     if (set_places != null) {
                         place_spinner.setSelection(set_places.toInt())
                     }
+
+
                     supportActionBar?.title =
                         "Редактирование события ${editevent.tittle}"
 
@@ -93,8 +98,8 @@ class EventEditActivity : AppCompatActivity() {
 
 
                         builder.setPositiveButton(R.string.OK) { dialog, which ->
-
-                            editevent?.performDelete()
+                            // вызов метода performDelete класса Event, а затем возврат на "Ваши ивенты"
+                            editevent.performDelete()
                             val intent = Intent(this, MyEventsActivity::class.java)
                             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
                             startActivity(intent)
@@ -140,6 +145,7 @@ class EventEditActivity : AppCompatActivity() {
                                 currentDateString.slice(5..6).toInt(),
                                 currentDateString.slice(8..9).toInt()
                             )
+                            // верификация даты
                             if (currentDate.compareTo(new_datetime)==1){
                                 Toast.makeText(this,
                                     "Пожалуйста, укажите правильную дату", Toast.LENGTH_SHORT).show()
@@ -150,6 +156,9 @@ class EventEditActivity : AppCompatActivity() {
                             new_datetime = Date(edit_event_datetime_datepicker.year,
                                 edit_event_datetime_datepicker.month,
                                 edit_event_datetime_datepicker.dayOfMonth)
+                            // необходимо для длины строк равноц 10 симв.
+                            // иначе 6.11.2021 или 11.6.2021 и тд
+                            // см. checkDate в Event
                             val new_datetime_string =
                                 SimpleDateFormat("dd.MM").
                                 format(new_datetime)+"."+"${edit_event_datetime_datepicker.year}"
