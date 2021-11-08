@@ -4,8 +4,8 @@ import User
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.eventboard.EventAgreeActivity.Companion.EVENT_ID_CREATOR
-import com.example.eventboard.showitems.ParticipantItem
+import com.example.eventboard.EventAgreeActivity.Companion.EVENT_ID_USER
+import com.example.eventboard.viewitems.ParticipantItem
 import com.google.firebase.firestore.FirebaseFirestore
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
@@ -62,8 +62,8 @@ class ParticipantsActivity : AppCompatActivity() {
                                             // хотя не все пользователи, на которых мы нажмем, создатели
                                             // было решено, что CreatorActivity - активность для
                                             // отображения профиля любого пользователя
-                                            val intent = Intent(this, CreatorActivity::class.java)
-                                            intent.putExtra(EVENT_ID_CREATOR, useritem.participant.id)
+                                            val intent = Intent(this, UserActivity::class.java)
+                                            intent.putExtra(EVENT_ID_USER, useritem.participant.id)
 
                                             startActivity(intent)
                                         }

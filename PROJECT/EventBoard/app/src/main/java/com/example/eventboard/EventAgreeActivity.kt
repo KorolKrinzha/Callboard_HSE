@@ -1,7 +1,6 @@
 package com.example.eventboard
 
 import Event
-import User
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,8 +9,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import com.example.eventboard.showitems.ParticipantItem
-import com.example.eventboard.showitems.SingleEventItem
+import com.example.eventboard.viewitems.SingleEventItem
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.xwray.groupie.GroupAdapter
@@ -38,7 +36,7 @@ class EventAgreeActivity : AppCompatActivity() {
         val event = intent.getParcelableExtra<Event>(LatestEventsActivity.EVENT_KEY)
         // из активности LatestEventsActivity получаем объект класса Event
         supportActionBar?.title = "${event?.tittle}"
-        EVENT_ID_CREATOR = event?.creator.toString()
+        EVENT_ID_USER = event?.creator.toString()
         EVENT_ID = event?.id.toString()
 
 
@@ -158,14 +156,13 @@ class EventAgreeActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.nav_creator-> {
-                val intent = Intent(this, CreatorActivity::class.java)
+                val intent = Intent(this, UserActivity::class.java)
 
 
-                intent.putExtra(EVENT_ID_CREATOR, EVENT_ID_CREATOR)
-                // теперь CreatorActivity это не только просмотр создателя,
-                // но и любого другого пользователя
-                // но в данном случае приложение перенесет нас именно в профиль создателя,
-                // так как в качве аргумента использован EVENT_ID_CREATOR
+                intent.putExtra(EVENT_ID_USER, EVENT_ID_USER)
+
+                //в данном случае приложение перенесет нас в профиль создателя,
+                // так как в качве аргумента использован атрибут
 
                 startActivity(intent)
             }
@@ -223,7 +220,7 @@ class EventAgreeActivity : AppCompatActivity() {
 
     companion object{
 
-        var EVENT_ID_CREATOR:String = "EVENT_ID_CREATOR" // id создателя
+        var EVENT_ID_USER:String = "EVENT_ID_USER" // id создателя
         var EVENT_ID:String = "EVENT_ID" // id события
 
     }

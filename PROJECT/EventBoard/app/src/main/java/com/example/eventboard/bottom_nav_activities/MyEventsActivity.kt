@@ -1,7 +1,7 @@
 package com.example.eventboard.bottom_nav_activities
 
 import Event
-import com.example.eventboard.showitems.EventItem
+import com.example.eventboard.viewitems.EventItem
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

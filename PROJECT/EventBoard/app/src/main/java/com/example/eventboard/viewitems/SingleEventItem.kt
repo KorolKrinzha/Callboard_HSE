@@ -1,13 +1,11 @@
-package com.example.eventboard.showitems
+package com.example.eventboard.viewitems
 
 import Event
-import android.text.method.LinkMovementMethod
 import android.util.Log
 import com.example.eventboard.R
 import com.google.firebase.firestore.FirebaseFirestore
 import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
-import kotlinx.android.synthetic.main.event_row_new.view.*
 import kotlinx.android.synthetic.main.single_event.view.*
 
 class SingleEventItem(val event: Event): Item<ViewHolder>(){

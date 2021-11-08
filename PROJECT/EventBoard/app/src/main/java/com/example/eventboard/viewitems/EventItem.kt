@@ -1,12 +1,9 @@
-package com.example.eventboard.showitems
+package com.example.eventboard.viewitems
 import Event
-import android.util.Log
 import com.example.eventboard.R
 import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.event_row_new.view.*
-import android.view.MotionEvent
-import android.view.View
 import com.google.firebase.firestore.FirebaseFirestore
 
 
@@ -43,7 +40,7 @@ class EventItem(val event: Event): Item<ViewHolder>(){
 
 
 
-// Перекрашиваем особвые события в красное, чтобы привлечь внимание
+// Перекрашиваем особые события в красное, чтобы привлечь внимание
 // точнее это не обязательно перекрас, мы просто меняем "задник" события
     private fun checkSpecial(viewHolder: ViewHolder) {
         val db = FirebaseFirestore.getInstance()

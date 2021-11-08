@@ -1,4 +1,4 @@
-package com.example.eventboard.showitems
+package com.example.eventboard.viewitems
 import Event
 import com.example.eventboard.R
 import com.xwray.groupie.Item

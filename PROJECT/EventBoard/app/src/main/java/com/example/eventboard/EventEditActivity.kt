@@ -131,7 +131,7 @@ class EventEditActivity : AppCompatActivity() {
                                 edit_event_datetime_datepicker.dayOfMonth)
 
                             if (new_tittle.isEmpty() || new_description.isEmpty()
-                                || new_place.toString().isEmpty() || new_datetime.toString().isEmpty()) {
+                                || new_place.isEmpty() || new_datetime.toString().isEmpty()) {
                                 Toast.makeText(this,
                                     "Пожалуйста, заполните все поля", Toast.LENGTH_SHORT).show()
                                 return@setPositiveButton

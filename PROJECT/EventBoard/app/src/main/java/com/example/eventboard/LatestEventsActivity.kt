@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import com.example.eventboard.bottom_nav_activities.FavoritesActivities
 import com.example.eventboard.bottom_nav_activities.MyEventsActivity
 import com.example.eventboard.bottom_nav_activities.RecommendedActivity
-import com.example.eventboard.showitems.EventItem
+import com.example.eventboard.viewitems.EventItem
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query

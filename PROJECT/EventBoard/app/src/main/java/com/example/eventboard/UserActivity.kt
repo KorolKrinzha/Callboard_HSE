@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
 import android.widget.Toast
-import com.example.eventboard.showitems.CreatorItem
+import com.example.eventboard.viewitems.CreatorItem
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.activity_creator.*
 // Просмотр профиля пользователя
 // TODO переименовать CreatorActivity и все методы и атрибуты так,
 //  чтобы стало ясно, что это просмотр профиля ЛЮБОГО пользователя
-class CreatorActivity : AppCompatActivity() {
+class UserActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_creator)
@@ -26,9 +26,9 @@ class CreatorActivity : AppCompatActivity() {
         val creator_id: String?
         creator_id = if (savedInstanceState == null) {
             val extras = intent.extras
-            extras?.getString(EventAgreeActivity.EVENT_ID_CREATOR)
+            extras?.getString(EventAgreeActivity.EVENT_ID_USER)
         } else {
-            savedInstanceState.getSerializable("EVENT_ID_CREATOR") as String?
+            savedInstanceState.getSerializable("EVENT_ID_USER") as String?
         }
 
 
