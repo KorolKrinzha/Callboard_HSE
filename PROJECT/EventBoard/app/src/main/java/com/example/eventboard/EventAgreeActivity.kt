@@ -25,7 +25,8 @@ class EventAgreeActivity : AppCompatActivity() {
         // TODO обновить actionbar после редактирования
         //апдейт: я понял, в чем проблема. Выход, который я вижу - еще раз вызов бд
         // Пока не собираюсь делать обновление, тк нагрузит и код, и бд, и приложение:(
-        fetchSingleEvent(event?.id.toString())    }
+        fetchSingleEvent(event?.id.toString())
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,7 +52,7 @@ class EventAgreeActivity : AppCompatActivity() {
         val db = FirebaseFirestore.getInstance()
         val uid = FirebaseAuth.getInstance().uid.toString()
 
-        if (event?.creator==uid){
+        if (event?.creator == uid) {
             single_event_button.setBackgroundColor(getResources().getColor(R.color.black))
             single_event_button.setText(R.string.single_event_edit)
             single_event_button.setOnClickListener {
@@ -63,14 +64,10 @@ class EventAgreeActivity : AppCompatActivity() {
                 // кнопка позволяет ему перейти на активность редакции
 
 
-
-
-
-
             }
         }
         // если не редактор, возможны два случая: участник или нет
-        else{
+        else {
             db.collection("event_participants")
                 .document(event?.id.toString())
                 .get()
@@ -78,10 +75,11 @@ class EventAgreeActivity : AppCompatActivity() {
                     if (document != null) {
                         val participants = document.data?.get("participants") as? List<String>
                         // поле participants это массив. Смотрим, содержит ли он айди юзера
-                        if (participants?.contains(uid) == true){
+                        if (participants?.contains(uid) == true) {
 
-                            single_event_button.setBackgroundColor(getResources().
-                            getColor(R.color.red))
+                            single_event_button.setBackgroundColor(
+                                getResources().getColor(R.color.red)
+                            )
                             single_event_button.setText(R.string.single_event_disagree)
 
                             single_event_button.setOnClickListener {
@@ -103,18 +101,15 @@ class EventAgreeActivity : AppCompatActivity() {
                                 builder.show()
 
 
-
-
                             }
-
-
 
 
                         }
                         // если не содержит, он может им стать
-                        else{
-                            single_event_button.setBackgroundColor(getResources().
-                            getColor(R.color.blue_bg_var))
+                        else {
+                            single_event_button.setBackgroundColor(
+                                getResources().getColor(R.color.blue_bg_var)
+                            )
                             single_event_button.setText(R.string.single_event_agree)
 
                             single_event_button.setOnClickListener {
@@ -123,7 +118,6 @@ class EventAgreeActivity : AppCompatActivity() {
                             }
 
                         }
-
 
 
                     } else {
@@ -137,14 +131,6 @@ class EventAgreeActivity : AppCompatActivity() {
         }
 
 
-
-
-
-
-
-
-
-
     }
 
     // меню вверху
@@ -154,8 +140,8 @@ class EventAgreeActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
-            R.id.nav_creator-> {
+        when (item.itemId) {
+            R.id.nav_creator -> {
                 val intent = Intent(this, UserActivity::class.java)
 
 
@@ -166,7 +152,7 @@ class EventAgreeActivity : AppCompatActivity() {
 
                 startActivity(intent)
             }
-            R.id.nav_participants-> {
+            R.id.nav_participants -> {
                 val intent = Intent(this, ParticipantsActivity::class.java)
                 // Просмотр участников
 
@@ -179,8 +165,6 @@ class EventAgreeActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
-
-
 
 
     private fun fetchSingleEvent(id: String) {
@@ -215,13 +199,10 @@ class EventAgreeActivity : AppCompatActivity() {
     }
 
 
+    companion object {
 
-
-
-    companion object{
-
-        var EVENT_ID_USER:String = "EVENT_ID_USER" // id создателя
-        var EVENT_ID:String = "EVENT_ID" // id события
+        var EVENT_ID_USER: String = "EVENT_ID_USER" // id создателя
+        var EVENT_ID: String = "EVENT_ID" // id события
 
     }
 

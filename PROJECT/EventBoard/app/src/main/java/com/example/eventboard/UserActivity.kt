@@ -13,6 +13,7 @@ import com.google.firebase.firestore.QuerySnapshot
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_creator.*
+
 // Просмотр профиля пользователя
 // TODO переименовать CreatorActivity и все методы и атрибуты так,
 //  чтобы стало ясно, что это просмотр профиля ЛЮБОГО пользователя
@@ -20,7 +21,6 @@ class UserActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_creator)
-
 
 
         val creator_id: String?
@@ -43,20 +43,19 @@ class UserActivity : AppCompatActivity() {
     private fun fetchCreatorInfo(creator_id: String) {
         val db = FirebaseFirestore.getInstance()
         db.collection("users")
-            .whereEqualTo("uid",creator_id)
+            .whereEqualTo("uid", creator_id)
             .get()
-            .addOnCompleteListener {
-                    task ->
+            .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     for (document in task.result!!) {
                         creator_username.setText(document.data.get("fullname").toString())
                         creator_email.setText(document.data.get("email").toString())
                         creator_email.setMovementMethod(
-                            LinkMovementMethod.getInstance())
+                            LinkMovementMethod.getInstance()
+                        )
                         supportActionBar?.title = "Пользователь ${document.data.get("username")}"
                     }
-                }
-                else{
+                } else {
                     creator_username.setText("Ошибка")
                     creator_email.setText("Ошибка")
                     supportActionBar?.title = "Ошибка"
@@ -68,7 +67,7 @@ class UserActivity : AppCompatActivity() {
     }
 
 
-    private fun fetchCreatorEvents(creator_id:String){
+    private fun fetchCreatorEvents(creator_id: String) {
         val adapter = GroupAdapter<ViewHolder>()
 
         val db: FirebaseFirestore? = FirebaseFirestore.getInstance()
@@ -86,8 +85,9 @@ class UserActivity : AppCompatActivity() {
                                 document.data.get("datetime").toString(),
                                 document.data.get("place").toString(),
                                 document.data.get("description").toString(),
-                                document.data.get("creator").toString())
-                            if (event!=null){ adapter.add(CreatorItem(event))}
+                                document.data.get("creator").toString()
+                            )
+                            adapter.add(CreatorItem(event))
 
                             adapter.setOnItemClickListener { item, view ->
                                 val CreatorItem = item as CreatorItem
@@ -98,13 +98,11 @@ class UserActivity : AppCompatActivity() {
                                 startActivity(intent)
                             }
                         }
-                    }
-                    else{
+                    } else {
                         Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
                     }
                 })
-        }
-        else{
+        } else {
             Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
         }
 

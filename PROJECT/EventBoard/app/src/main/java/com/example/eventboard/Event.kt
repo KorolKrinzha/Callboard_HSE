@@ -9,58 +9,57 @@ import java.util.*
 import kotlin.collections.HashMap
 
 @Parcelize
-class Event(val id:String, val tittle:String, val datetime:String, val place:String,
-            val description:String, val creator:String ):Parcelable {
+class Event(
+    val id: String, val tittle: String, val datetime: String, val place: String,
+    val description: String, val creator: String
+) : Parcelable {
     // Parcelable это интерфейс, как Serializable, но круче (как я понял)
     // А Serializable это для сериализации данных
     // Нужно для передачи целого оъекта класса из одной активности в другую
-    constructor(): this( "", "","", "", "", "")
+    constructor() : this("", "", "", "", "", "")
 
 
-
-// Участие в событии
+    // Участие в событии
     fun performAgree() {
         val db = FirebaseFirestore.getInstance()
-        val event_participants:MutableMap<String, Any> = HashMap()
+        val event_participants: MutableMap<String, Any> = HashMap()
         val uid = FirebaseAuth.getInstance().uid.toString()
-
 
 
         // event_participants устроен так, что состоит из документа с одним полем participants
         // Это array со всеми id участников
 
         db.collection("event_participants")
-            .document(id).get().addOnCompleteListener { task->
-                if (task.isSuccessful){
+            .document(id).get().addOnCompleteListener { task ->
+                if (task.isSuccessful) {
                     val document = task.getResult();
                     if (document != null) {
                         if (document.exists()) {
                             // добавление нового участника
                             db.collection("event_participants")
                                 .document(id)
-                                .update("participants", FieldValue.arrayUnion
-                                    (uid))
+                                .update(
+                                    "participants", FieldValue.arrayUnion
+                                        (uid)
+                                )
                                 .addOnSuccessListener {
-                                    
+
 
                                 }.addOnFailureListener {
-                                    
-
 
 
                                 }
-                        }
-                        else{
+                        } else {
                             // Если событие еще не числится в event_participants,
-                                // мы просто создаем новый документ с id участника
+                            // мы просто создаем новый документ с id участника
                             Log.d("KEK", "No docs")
                             val participants = hashMapOf(
 
-                                "participants" to arrayListOf(uid))
+                                "participants" to arrayListOf(uid)
+                            )
 
-                            db.collection("event_participants").
-                            document(id).set(participants)
-                            
+                            db.collection("event_participants").document(id).set(participants)
+
                         }
                     }
 
@@ -70,7 +69,8 @@ class Event(val id:String, val tittle:String, val datetime:String, val place:Str
 
 
     }
-// во время редактирования: обновление документа
+
+    // во время редактирования: обновление документа
     fun performUpdate() {
         val db = FirebaseFirestore.getInstance()
         db.collection("events").document(id)
@@ -81,12 +81,12 @@ class Event(val id:String, val tittle:String, val datetime:String, val place:Str
                     "datetime" to datetime,
                     "description" to description,
 
-                )
+                    )
             ).addOnSuccessListener { }
 
     }
 
-// В коллеции под именем id события находим id пользователя -->
+    // В коллеции под именем id события находим id пользователя -->
 //  удаляем из списка участников
     fun performDisAgree() {
         val db = FirebaseFirestore.getInstance()
@@ -96,10 +96,10 @@ class Event(val id:String, val tittle:String, val datetime:String, val place:Str
 
     }
 
-// удаление события во время редактирования
+    // удаление события во время редактирования
 // удаляем в двух коллекциях - в самом событии и участниках
 // (логично, нельзя участвовать в удаленном событии)
-    fun performDelete(){
+    fun performDelete() {
         val db = FirebaseFirestore.getInstance()
 
         db.collection("event_participants")
@@ -118,11 +118,10 @@ class Event(val id:String, val tittle:String, val datetime:String, val place:Str
     }
 
 
-
-// Метод, необходимый для валидации даты
+    // Метод, необходимый для валидации даты
 // При true мы добавляем событие в ленту главных и любимых
 // Те, у которых False, старенькие, никому не нужны:(
-    fun checkDate():Boolean {
+    fun checkDate(): Boolean {
 
         // Calendar.getInstance().time.toString() -->
         // (пример) Sat Nov 06 22:06:51 GMT+03:00 2021
@@ -154,15 +153,11 @@ class Event(val id:String, val tittle:String, val datetime:String, val place:Str
     }
 
 
-
-
-// Для удобного просмотра KEK-логов
+    // Для удобного просмотра KEK-логов
     override fun toString(): String {
         return ("${id}: Tittle is ${tittle}, Datetime is ${datetime}," +
                 " Place is ${place}")
     }
-
-
 
 
 }
