@@ -37,11 +37,11 @@ class ProfileActivity : AppCompatActivity() {
 
         profile_contacts.setOnClickListener {
 
-            gotoUrl("https://www.instagram.com/korol_krinzha/")
+            gotoUrl("https://example.com/")
         }
 
         profile_github.setOnClickListener {
-            gotoUrl("https://github.com/ArtemSmirnovHSE/Callboard_HSE")
+            gotoUrl("https://example.com/")
         }
 
 
